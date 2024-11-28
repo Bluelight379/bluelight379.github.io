@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html id="XenForo" lang="en-US" dir="LTR" class="Public XenBase LoggedOut NoSidebar   RightSidebar  Responsive hasJs NoTouch HasDragDrop" xmlns:fb="http://www.facebook.com/2008/fbml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	
+		<!--<base href="https://forums.sonicretro.org/">--><base href=".">
+		<script>
+			var _b = document.getElementsByTagName('base')[0], _bH = "https://forums.sonicretro.org/";
+			if (_b && _b.href != _bH) _b.href = _bH;
+		</script>
+	
+
+	<title>So I discovered a "fake" copy for Sonic 4 | Sonic and Sega Retro Forums</title>
+	
+	
+	
+	<link rel="stylesheet" href="./So I discovered a _fake_ copy for Sonic 4 _ Sonic and Sega Retro Forums_files/css.php">
+	<link rel="stylesheet" href="./So I discovered a _fake_ copy for Sonic 4 _ Sonic and Sega Retro Forums_files/css(1).php">
+
+
+	
+	
+		<link href="./So I discovered a _fake_ copy for Sonic 4 _ Sonic and Sega Retro Forums_files/css" rel="stylesheet" type="text/css">
+	
+	
+	
+		<link rel="stylesheet" href="./So I discovered a _fake_ copy for Sonic 4 _ Sonic and Sega Retro Forums_files/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
+	
+	
+	
+	
+	
+		<script src="./So I discovered a _fake_ copy for Sonic 4 _ Sonic and Sega Retro Forums_files/jquery-1.11.0.min.js.download"></script>	
+	
+		<script>if (!window.jQuery) { document.write('<scr'+'ipt type="text/javascript" src="js/jquery/jquery-1.11.0.min.js"><\/scr'+'ipt>'); }</script>
+		
+	<script src="./So I discovered a _fake_ copy for Sonic 4 _ Sonic and Sega Retro Forums_files/xenforo.js.download"></script>
+	<script src="./So I discovered a _fake_ copy for Sonic 4 _ Sonic and Sega Retro Forums_files/postrating.js.download"></script>
+
+
+
+
+
+
+
+
+
+<script type="text/rocketscript">
+
+		var retro_menu_objs = [];
+		jQuery(window).unbind('resize').resize(function(){
+			for (var i = 0; i < retro_menu_objs.length; i++)
+				if (typeof(retro_menu_objs[i]) == "object")
+					if (typeof(retro_menu_objs[i].resize) == "function")
+						retro_menu_objs[i].resize();
+		});
+
+		var retro_menu_obj = function(e, limit, outerlimit) {
+			var that = this;
+			this.e = e;
+			this.original_width = e.children('div').outerWidth();
+			this.limit = limit;
+			this.outerlimit = outerlimit;
+			this.resize = function() {
+				if (this.original_width == 0) return;
+				if (jQuery(window).width() >= this.original_width + this.limit) {
+					this.e.children('div').children('a').each(function(){
+						jQuery(this).show();
+					});
+					this.e.children('div').children('div').children('a').hide();
+					this.e.children('div').children('div').children('ul').children('li').each(function(){
+						jQuery(this).hide();
+					});
+				} else {
+					var els = [];
+					this.e.children('div').children('a').each(function(){
+						els.push(jQuery(this));
+						jQuery(this).show();
+					});
+					this.e.children('div').children('div').children('a').show();
+					var num = 0, current;
+					while (els.length > 0) {
+						current = els.pop();
+						current.hide();
+						num++;
+						if (jQuery(window).width() >= this.e.children('div').outerWidth() + this.outerlimit) els = [];
+					}
+					if (num > 0) {
+						this.e.children('div').children('div').children('ul').children('li').each(function(){
+							els.push(jQuery(this));
+						});
+						while (els.length > 0) {
+							current = els.pop();
+							if (num > 0) current.show(); else current.hide();
+							num--;
+						}
+					}
+				}
+			};
+			this.dropdown_out = -1;
+			this.dropdown_interval = null;
+			this.dropdown_interval_func = function(){
+				if (that.dropdown_out < 0) return;
+				else if (that.dropdown_out == 0) {
+					that.e.children('div').children('div').children('ul').hide();
+					that.e.children('div').children('div').children('a').removeAttr('style');
+				}
+				that.dropdown_out--;
+			};
+			if (this.e.children('div').children('div').length > 0) this.e.children('div').children('div').remove();
+			var link_html = this.e.children('div').html().split('</a>'); link_html.pop();
+			for (var i = 0; i < link_html.length; i++) {
+				link_html[i] = "<li>" + link_html[i] + "</a></li>";
+				if (link_html[i].indexOf('class="current"') != -1) {
+					link_html[i] = link_html[i].replace('class="current"','').replace('<li>','<li class="current">');
+				}
+			}
+			this.e.children('div').append('<div><a href="#">&#9660;</a><ul style="display:none">' + link_html.join("") + '</ul></div>');
+			this.e.children('div').children('div').children('a').unbind('click').click(function(e){
+				e.preventDefault();
+				jQuery(this).next().toggle();
+				if (jQuery(this).next().is(':visible')) {
+					jQuery(this).attr('style','color:rgba(255,255,255,1)');
+				} else {
+					jQuery(this).removeAttr('style');
+				}
+				this.dropdown_out = -1;
+				clearInterval(that.dropdown_interval);
+				that.dropdown_interval = null;
+			});
+			this.e.children('div').children('div').children('ul').unbind('mouseenter').unbind('mouseleave').hover(function(){
+				that.dropdown_out = -1;
+				clearInterval(that.dropdown_interval);
+				that.dropdown_interval = null;
+			},function(){
+				that.dropdown_out = 10;
+				clearInterval(that.dropdown_interval);
+				that.dropdown_interval = setInterval(function(){ that.dropdown_interval_func(); },100);
+			});
+			this.resize();
+		};
+	</script>
+	
+	
+	<link rel="apple-touch-icon" href="https://forums.sonicretro.org/styles/sonicretroxf/xenforo/logo.og.png">
+	<link rel="alternate" type="application/rss+xml" title="RSS feed for Sonic and Sega Retro Forums" href="https://forums.sonicretro.org/index.php?forums/-/index.rss">
+	
+	<link rel="next" href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/page-2">
+	<link rel="canonical" href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/">
+	<meta name="description" content="What are your unpopular Sonic opinions? You know, opinions like &#39;Sonic Mania is trash&#39; or &#39;Sonic Mania is not the real Sonic 4&#39; or &#39;Sonic Mania only...">	<meta property="og:site_name" content="Sonic and Sega Retro Forums">
+	<meta property="og:image" content="https://forums.sonicretro.org/data/avatars/m/35/35380.jpg?1650692078">
+	<meta property="og:image" content="https://forums.sonicretro.org/styles/sonicretroxf/xenforo/logo.og2.png">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/">
+	<meta property="og:title" content="Unpopular Sonic Opinions">
+	<meta property="og:description" content="What are your unpopular Sonic opinions? You know, opinions like &#39;Sonic Mania is trash&#39; or &#39;Sonic Mania is not the real Sonic 4&#39; or &#39;Sonic Mania only...">
+	
+	
+	
+
+	<link rel="SHORTCUT ICON" href="https://sonicretro.org/favicon.ico">
+	<meta name="theme-color" content="#787848">
+</head>
+
+<body class="node1 node2 SelectQuotable" style="">
+<div style="display: none;"><a href="https://forums.sonicretro.org/ducksgoquack.php">don't click here</a></div>
+
+
+
+
+	
+		
+
+
+
+<div id="loginBar">
+	<div class="pageWidth">
+		<div class="pageContent">	
+			<h3 id="loginBarHandle">
+				<label for="LoginControl"><a href="https://forums.sonicretro.org/index.php?login/" class="concealed noOutline">Log in or Sign up</a></label>
+			</h3>
+			
+			<span class="helper"></span>
+			
+			
+		<form action="https://forums.sonicretro.org/index.php?login/login" method="post" class="xenForm " id="login" style="display:none">
+
+	
+
+	<div class="ctrlWrapper">
+		<dl class="ctrlUnit">
+			<dt><label for="LoginControl">Your name or email address:</label></dt>
+			<dd><input type="text" name="login" id="LoginControl" class="textCtrl" tabindex="101"></dd>
+		</dl>
+	
+	
+		<dl class="ctrlUnit">
+			<dt>
+				<label for="ctrl_password">Do you already have an account?</label>
+			</dt>
+			<dd>
+				<ul>
+					<li><label for="ctrl_not_registered"><input type="radio" name="register" value="1" id="ctrl_not_registered" tabindex="105">
+						No, create an account now.</label></li>
+					<li><label for="ctrl_registered"><input type="radio" name="register" value="0" id="ctrl_registered" tabindex="105" checked="checked" class="Disabler">
+						Yes, my password is:</label></li>
+					<li id="ctrl_registered_Disabler">
+						<input type="password" name="password" autocomplete="current-password" spellcheck="false" class="textCtrl" id="ctrl_password" tabindex="102">
+						<div class="lostPassword"><a href="https://forums.sonicretro.org/index.php?lost-password/" class="OverlayTrigger OverlayCloser" tabindex="106">Forgot your password?</a></div>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+	
+		
+		<dl class="ctrlUnit submitUnit">
+			<dt></dt>
+			<dd>
+				<input type="submit" class="button primary" value="Log in" tabindex="104" data-loginphrase="Log in" data-signupphrase="Sign up">
+				<label for="ctrl_remember" class="rememberPassword"><input type="checkbox" name="remember" value="1" id="ctrl_remember" tabindex="103"> Stay logged in</label>
+			</dd>
+		</dl>
+	</div>
+
+	<input type="hidden" name="cookie_check" value="1">
+	<input type="hidden" name="redirect" value="/index.php?threads/unpopular-sonic-opinions.41037/">
+	<input type="hidden" name="_xfToken" value="">
+
+</form></div>
+	</div>
+</div>
+	
+
+
+
+
+
+<div id="headerMover">
+
+
+
+
+	<div id="headerProxy"></div>
+
+<div id="content" class="thread_view">
+	<div class="pageWidth">
+		<div class="pageContent">
+			
+			
+			
+			
+			<!-- main content area -->
+			
+			
+
+			
+			
+						
+						
+						
+						
+						
+							
+						<div class="breadBoxTop ">
+							
+							
+
+<nav>
+	
+		
+			
+				
+			
+		
+			
+				
+			
+		
+	
+
+	<fieldset class="breadcrumb" style="">
+		<a href="https://forums.sonicretro.org/index.php?misc/quick-navigation-menu&amp;selected=node-1" class="OverlayTrigger jumpMenuTrigger" data-cacheoverlay="true" title="Open quick navigation"><i class="fa fa-sitemap"></i><!--Jump to...--></a> 
+			
+		<div class="boardTitle"><strong>Sonic and Sega Retro Forums</strong></div>
+		
+		<span class="crumbs">
+			
+				<span class="crust homeCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
+					<a href="https://forums.sonicretro.org/" class="crumb" rel="up" itemprop="url"><span itemprop="title"><i class="fa fa-home fa-fw"></i></span></a>
+					<span class="arrow"><span></span></span>
+				</span>
+			
+			
+			
+				<span class="crust selectedTabCrumb" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
+					<a href="https://forums.sonicretro.org/index.php" class="crumb" rel="up" itemprop="url"><span itemprop="title">Forums</span></a>
+					<span class="arrow"><span>&gt;</span></span>
+				</span>
+			
+			
+			
+				
+					<span class="crust" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
+						<a href="https://forums.sonicretro.org/index.php#sonic-and-sega-general.2" class="crumb" rel="up" itemprop="url"><span itemprop="title">Sonic and Sega General</span></a>
+						<span class="arrow"><span>&gt;</span></span>
+					</span>
+				
+					<span class="crust" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb">
+						<a href="https://forums.sonicretro.org/index.php?forums/general-sonic-discussion.1/" class="crumb" rel="up" itemprop="url"><span itemprop="title">General Sonic Discussion</span></a>
+						<span class="arrow"><span>&gt;</span></span>
+					</span>
+				
+			
+		</span>
+	</fieldset>
+</nav>
+						</div>
+						
+						
+						
+						
+						
+					
+						<!--[if lt IE 8]>
+							<p class="importantMessage">You are using an out of date browser. It  may not display this or other websites correctly.<br />You should upgrade or use an <a href="https://www.google.com/chrome/browser/" target="_blank">alternative browser</a>.</p>
+						<![endif]-->
+
+						
+						
+	
+
+	
+						
+						
+						
+						
+						
+												
+							<!-- h1 title, description -->
+							<div class="titleBar">
+								
+								<h1>So I discovered a "fake" copy for Sonic 4									
+									</h1>
+								
+								<p id="pageDescription" class="muted ">
+	Discussion in '<a href="https://forums.sonicretro.org/index.php?forums/general-sonic-discussion.1/">General Sonic Discussion</a>' started by <a href="https://forums.sonicretro.org/index.php?members/londinium.35380/" class="username" dir="auto">Yenesis</a>, <a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/"><span class="DateTime" title="Jun 17, 2022 at 12:01 AM">Jun 17, 2022</span></a>.
+</p>
+							</div>
+						
+						
+						
+						
+						
+						
+						<!-- main template -->
+						
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+<div class="pageNavLinkGroup">
+	<div class="linkGroup SelectionCountContainer">
+		
+		
+	</div>
+
+	
+
+
+<div class="PageNav" data-page="1" data-range="2" data-start="2" data-end="6" data-last="234" data-sentinel="{{sentinel}}" data-baseurl="index.php?threads/unpopular-sonic-opinions.41037/page-{{sentinel}}">
+	
+	<span class="pageNavHeader">Page 1 of 234</span>
+	
+	<nav>
+		
+		
+		<a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/" class="currentPage " rel="start">1</a>
+		
+		
+			<a class="PageNavPrev hidden" style="">←</a> <span class="scrollable"><span class="items">
+		
+		
+		
+			<a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/page-2" class="">2</a>
+		
+			<a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/page-3" class="">3</a>
+		
+			<a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/page-4" class="">4</a>
+		
+			<a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/page-5" class="">5</a>
+		
+			<a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/page-6" class="">6</a>
+		
+		
+		
+			</span></span> <a class="PageNavNext " style="">→</a>
+		
+		
+		<a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/page-234" class="">234</a>
+		
+		
+			<a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/page-2" class="text">Next &gt;</a>
+			
+		
+	</nav>	
+	
+	
+</div>
+
+</div>
+
+
+
+
+
+<form action="https://forums.sonicretro.org/index.php?inline-mod/post/switch" method="post" class="InlineModForm section" data-cookiename="posts" data-controls="#InlineModControls" data-imodoptions="#ModerationSelect option">
+
+	<ol class="messageList" id="messageList">
+		
+			
+				
+
+
+
+<li id="post-1009648" class="message   threadStarter  " data-author="Londinium">
+	<div class="xbMessageHelper"></div>
+
+	<div class="messageHeading">
+		<span class="leftSide">
+			
+				<a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/" title="Permalink" class="datePermalink"><span class="DateTime" title="Jun 17, 2022 at 12:01 AM">Jun 17, 2022</span></a>
+			
+		</span>
+		
+		<span class="rightSide">
+			<a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/" title="Permalink" class="item muted postNumber hashPermalink OverlayTrigger" data-href="index.php?posts/1009648/permalink">#1</a>
+	
+		</span>
+		
+	</div>
+
+	
+
+<div class="messageUserInfo" itemscope="itemscope" itemtype="http://data-vocabulary.org/Person">	
+<div class="messageUserBlock ">
+	
+		<div class="avatarHolder">
+			<span class="helper"></span>
+			<a href="https://forums.sonicretro.org/index.php?members/londinium.35380/" class="avatar Av35380l" data-avatarhtml="true"><img src="data:image/jpeg;base64,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" width="150" height="150" alt="Londinium"></a>
+		
+			<!-- slot: message_user_info_avatar -->
+		</div>
+	
+
+
+	
+		<h3 class="userText">
+			<a href="https://forums.sonicretro.org/index.php?members/londinium.35380/" class="username" dir="auto" itemprop="name">Yenesis</a></h3>
+			<em class="userTitle" itemprop="title">The ROM hunter</em>
+			<em class="group-member wrapped" itemprop="title"><span class="before"></span><strong>Member</strong><span class="after"></span></em>
+			<!-- slot: message_user_info_text -->
+		
+	
+		
+	
+		<div class="extraUserInfo">
+			
+					
+				
+					<dl class="">
+						<dt><i class="fa fa-comments fa-fw Tooltip" data-offsetx="-6" data-offsety="0"></i></dt>
+						<dd><a href="https://forums.sonicretro.org/index.php?search/member&amp;user_id=35380" class="concealed" rel="nofollow">3,128</a></dd>
+					</dl>
+				
+				
+					<dl class="pairsJustified xbLikes">
+						<dt><i class="fa fa-thumbs-up fa-fw Tooltip" data-offsetx="-6" data-offsety="0"></i></dt>
+						<dd>2,832</dd>
+					</dl>
+				
+				
+				
+					<dl class="pairsJustified xbTrophyPoints">
+						<dt><i class="fa fa-trophy fa-fw Tooltip" data-offsetx="-6" data-offsety="0"></i></dt>
+						<dd><a href="https://forums.sonicretro.org/index.php?members/londinium.35380/trophies" class="OverlayTrigger concealed">93</a></dd>
+					</dl>
+				
+			
+				
+			
+				
+				
+				
+				
+				
+					<dl class="pairsJustified xbLocation">
+						<dt><i class="fa fa-map-marker-alt fa-fw Tooltip" data-offsetx="-6" data-offsety="0"></i></dt>
+						<dd><a href="https://forums.sonicretro.org/index.php?misc/location-info&amp;location=Planet+Earth%28%3F%29" target="_blank" rel="nofollow" itemprop="address" class="concealed">USA</a></dd>
+					</dl>
+				
+
+				
+				
+							
+						
+			
+			
+		</div>
+	
+		
+
+
+	<span class="arrow"><span></span></span>
+</div>
+</div>
+
+	<div class="messageInfo primaryContent">
+		
+		
+		
+		
+		
+		
+		
+		<div class="messageContent">		
+			<article>
+				<blockquote class="messageText SelectQuoteContainer ugc baseHtml">So... I found this earlier version of Sonic 4 and I am just wondering... am I the only one that found this BETTER than what we have got?<br>
+<br>But I did found this incident in 1995 or smth and discovered that this is apparently lost media, when I ran this file, it claimed that this is fbi protected and that viewing this file is prohibited so I started digging...<br><br>
+				So apparently this is infact the "safe" version of the game and well, as I dug deeper I found that this is just a copy of the past few games except that weird stuff keeps on happening and uh, well this game really was interesting even for me<br><br>This feels so much like those corny creepypastras you hear about but its actually real, people have died playing these games and the only thing protecting me for seeing what they saw was black boxes covering everything as some sort of censorship, bet people are gonna love digging into this!<br><br>Edit: I was asked to remove the link from the site, apparently the mods freaked the hell out when I posted this<div class="messageTextEndMarker">&nbsp;</div></blockquote>
+			</article>
+			
+			
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+			
+				
+		<div class="messageMeta ToggleTriggerAnchor">
+			<div class="privateControls hiddenResponsiveMedium hiddenResponsiveNarrow">
+				
+
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			</div>
+			
+			<div class="privateControls visibleResponsiveMedium visibleResponsiveNarrow">
+							
+				
+			</div>
+			
+			
+			<div class="publicControls">
+				
+				
+				
+				
+				
+			</div>
+		</div>
+	
+		
+		
+		
+<div class="dark_postrating likesSummary secondaryContent">
+	<div class="dark_postrating_container">
+			
+    
+
+<ul class="dark_postrating_outputlist">
+
+	
+		
+			<li>
+				<img src="./So I discovered a _fake_ copy for Sonic 4 _ Sonic and Sega Retro Forums_files/like.png" alt="Like" title="Like"> Like  x <strong>28</strong>
+			</li>
+		
+	
+	
+		<li> <a href="https://forums.sonicretro.org/index.php?posts/1009648/ratings" class="dark_postrating_list OverlayTrigger" data-cacheoverlay="false">List</a></li>
+	
+
+	</ul>
+			
+    
+
+<script type="text/javascript">
+var dark_postrating_minimum_opacity = 1;
+</script>
+
+<ul class="dark_postrating_inputlist " style="opacity: 1;">
+	
+</ul>
+
+	</div>
+	<div style="clear: right;"></div>
+</div>
+
+	</div>
+
+	
+	
+	
+	
+	
+	
+</li>
+			
+		
+			
+				
+
+
+
+
+			
+		
+			
+				
+
+
+
+
+			
+		
+			
+				
+
+
+
+
+			
+		
+			
+				
+
+
+
+
+			
+		
+			
+				
+
+
+
+
+			
+		
+			
+				
+
+
+
+
+			
+		
+			
+				
+
+
+
+
+			
+		
+			
+				
+
+
+
+
+			
+		
+			
+				
+
+
+
+
+			
+		
+			
+				
+
+
+
+
+			
+		
+			
+				
+
+
+
+
+			
+		
+			
+				
+
+
+
+
+			
+		
+			
+				
+
+
+
+
+			
+		
+			
+				
+
+
+
+
+			
+		
+			
+				
+
+
+
+
+			
+		
+			
+				
+
+
+
+
+			
+		
+			
+				
+
+
+
+
+			
+		
+			
+				
+
+
+
+<li id="post-1009674" class="message     " data-author="raphael_fc">
+	<div class="xbMessageHelper"></div>
+
+	<div class="messageHeading">
+		<span class="leftSide">
+			
+				<a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/#post-1009674" title="Permalink" class="datePermalink"><span class="DateTime" title="Jun 17, 2022 at 2:12 AM">Jun 17, 2022</span></a>
+			
+		</span>
+		
+		<span class="rightSide">
+			<a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/#post-1009674" title="Permalink" class="item muted postNumber hashPermalink OverlayTrigger" data-href="index.php?posts/1009674/permalink">#19</a>
+	
+		</span>
+		
+	</div>
+
+	
+
+<div class="messageUserInfo" itemscope="itemscope" itemtype="http://data-vocabulary.org/Person">	
+<div class="messageUserBlock ">
+	
+		<div class="avatarHolder">
+			<span class="helper"></span>
+			<a href="https://forums.sonicretro.org/index.php?members/raphael_fc.29710/" class="avatar Av29710l" data-avatarhtml="true"><img src="./So I discovered a _fake_ copy for Sonic 4 _ Sonic and Sega Retro Forums_files/images" width="150" height="150" alt="raphael_fc"></a>
+		
+			<!-- slot: message_user_info_avatar -->
+		</div>
+	
+
+
+	
+		<h3 class="userText">
+			<a href="https://forums.sonicretro.org/index.php?members/raphael_fc.29710/" class="username" dir="auto" itemprop="name">amidity_dx</a></h3>
+			<em class="userTitle" itemprop="title">OC by UИTIZIO</em>
+			<em class="group-member wrapped" itemprop="title"><span class="before"></span><strong>Member</strong><span class="after"></span></em>
+			<!-- slot: message_user_info_text -->
+		
+	
+		
+	
+		<div class="extraUserInfo">
+			
+					
+				
+					<dl class="">
+						<dt><i class="fa fa-comments fa-fw Tooltip" data-offsetx="-6" data-offsety="0"></i></dt>
+						<dd><a href="https://forums.sonicretro.org/index.php?search/member&amp;user_id=29710" class="concealed" rel="nofollow">1,856</a></dd>
+					</dl>
+				
+				
+					<dl class="pairsJustified xbLikes">
+						<dt><i class="fa fa-thumbs-up fa-fw Tooltip" data-offsetx="-6" data-offsety="0"></i></dt>
+						<dd>462</dd>
+					</dl>
+				
+				
+				
+					<dl class="pairsJustified xbTrophyPoints">
+						<dt><i class="fa fa-trophy fa-fw Tooltip" data-offsetx="-6" data-offsety="0"></i></dt>
+						<dd><a href="https://forums.sonicretro.org/index.php?members/raphael_fc.29710/trophies" class="OverlayTrigger concealed">93</a></dd>
+					</dl>
+				
+			
+				
+			
+				
+				
+				
+				
+				
+					<dl class="pairsJustified xbLocation">
+						<dt><i class="fa fa-map-marker-alt fa-fw Tooltip" data-offsetx="-6" data-offsety="0"></i></dt>
+						<dd><a href="https://forums.sonicretro.org/index.php?misc/location-info&amp;location=Brazil" target="_blank" rel="nofollow" itemprop="address" class="concealed">Canada</a></dd>
+					</dl>
+				
+
+				
+				
+							
+						
+			
+			
+		</div>
+	
+		
+
+
+	<span class="arrow"><span></span></span>
+</div>
+</div>
+
+	<div class="messageInfo primaryContent">
+		
+		
+		
+		
+		
+		
+		
+		<div class="messageContent">		
+			<article>
+				<blockquote class="messageText SelectQuoteContainer ugc baseHtml">I dont think you should post stuff like this here... gotta check in with the mods first, I've seen this firsthand, heck a friend of mine has died because of this, please keep these serious conversations to other forums, thx<div class="messageTextEndMarker">&nbsp;</div>
+				</blockquote>
+			</article>
+			
+			
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+			
+				
+		<div class="messageMeta ToggleTriggerAnchor">
+			<div class="privateControls hiddenResponsiveMedium hiddenResponsiveNarrow">
+				
+
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			</div>
+			
+			<div class="privateControls visibleResponsiveMedium visibleResponsiveNarrow">
+							
+				
+			</div>
+			
+			
+			<div class="publicControls">
+				
+				
+				
+				
+				
+			</div>
+		</div>
+	
+		
+		
+		
+<div class="dark_postrating likesSummary secondaryContent">
+	<div class="dark_postrating_container">
+			
+    
+
+<ul class="dark_postrating_outputlist">
+
+	
+		
+			<li>
+				<img src="./So I discovered a _fake_ copy for Sonic 4 _ Sonic and Sega Retro Forums_files/clear.png" alt="Agree" title="Agree" style="background: url(&#39;styles/dark/ratings/spritesheet.png&#39;) no-repeat 0px -16px; width: 16px; height: 16px;"> Agree  x <strong>7</strong>
+			</li>
+		
+	
+	
+		<li> <a href="https://forums.sonicretro.org/index.php?posts/1009674/ratings" class="dark_postrating_list OverlayTrigger" data-cacheoverlay="false">List</a></li>
+	
+
+	</ul>
+			
+    
+
+<script type="text/javascript">
+var dark_postrating_minimum_opacity = 1;
+</script>
+
+<ul class="dark_postrating_inputlist " style="opacity: 1;">
+	
+</ul>
+
+	</div>
+	<div style="clear: right;"></div>
+</div>
+
+	</div>
+
+	
+	
+	
+	
+	
+	
+</li>
+			
+		
+			
+				
+
+
+
+
+			
+		
+		
+	</ol>
+
+	
+
+	<input type="hidden" name="_xfToken" value="">
+
+</form>
+
+	<div class="pageNavLinkGroup">
+			
+				<div class="linkGroup">
+					
+						<label for="LoginControl"><a href="https://forums.sonicretro.org/index.php?login/" class="concealed element">(You must log in or sign up to reply here.)</a></label>
+					
+				</div>
+			
+			<div class="linkGroup" style="display: none"><a href="javascript:" class="muted JsOnly DisplayIgnoredContent Tooltip">Show Ignored Content</a></div>
+
+			
+
+
+<div class="PageNav" data-page="1" data-range="2" data-start="2" data-end="6" data-last="234" data-sentinel="{{sentinel}}" data-baseurl="index.php?threads/unpopular-sonic-opinions.41037/page-{{sentinel}}">
+	
+	<span class="pageNavHeader">Page 1 of 234</span>
+	
+	<nav>
+		
+		
+		<a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/" class="currentPage " rel="start">1</a>
+		
+		
+			<a class="PageNavPrev hidden" style="">←</a> <span class="scrollable"><span class="items">
+		
+		
+		
+			<a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/page-2" class="">2</a>
+		
+			<a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/page-3" class="">3</a>
+		
+			<a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/page-4" class="">4</a>
+		
+			<a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/page-5" class="">5</a>
+		
+			<a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/page-6" class="">6</a>
+		
+		
+		
+			</span></span> <a class="PageNavNext " style="">→</a>
+		
+		
+		<a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/page-234" class="">234</a>
+		
+		
+			<a href="https://forums.sonicretro.org/index.php?threads/unpopular-sonic-opinions.41037/page-2" class="text">Next &gt;</a>
+			
+		
+	</nav>	
+	
+	
+</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+	
+
+
+
+						
+						
+						
+						
+							<!-- login form, to be moved to the upper drop-down -->
+							
+
+
+
+
+
+
+
+
+						
+						
+						
+						
+					
+						
+			
+			
+						
+			<div class="breadBoxBottom">
+
+<nav>
+	
+
+	<fieldset class="breadcrumb" style="">
+		<a href="https://forums.sonicretro.org/index.php?misc/quick-navigation-menu&amp;selected=node-1" class="OverlayTrigger jumpMenuTrigger" data-cacheoverlay="true" title="Open quick navigation"><i class="fa fa-sitemap"></i><!--Jump to...--></a> 
+			
+		<div class="boardTitle"><strong>Sonic and Sega Retro Forums</strong></div>
+		
+		<span class="crumbs">
+			
+				<span class="crust homeCrumb">
+					<a href="https://forums.sonicretro.org/" class="crumb"><span><i class="fa fa-home fa-fw"></i></span></a>
+					<span class="arrow"><span></span></span>
+				</span>
+			
+			
+			
+				<span class="crust selectedTabCrumb">
+					<a href="https://forums.sonicretro.org/index.php" class="crumb"><span>Forums</span></a>
+					<span class="arrow"><span>&gt;</span></span>
+				</span>
+			
+			
+			
+				
+					<span class="crust">
+						<a href="https://forums.sonicretro.org/index.php#sonic-and-sega-general.2" class="crumb"><span>Sonic and Sega General</span></a>
+						<span class="arrow"><span>&gt;</span></span>
+					</span>
+				
+					<span class="crust">
+						<a href="https://forums.sonicretro.org/index.php?forums/general-sonic-discussion.1/" class="crumb"><span>General Sonic Discussion</span></a>
+						<span class="arrow"><span>&gt;</span></span>
+					</span>
+				
+			
+		</span>
+	</fieldset>
+</nav></div>
+			
+			
+			
+			
+			
+				
+<div class="xbScrollButtons" style="display: none;">
+	<div class="xbScrollUpButton" id="xb_ScrollUp"><i class="fa fa-chevron-up"></i></div>
+	
+</div>
+			
+			
+			
+		</div>
+	</div>
+	
+</div>
+
+
+<header>
+	
+
+
+<div id="header">
+	
+		<div id="logoBlock">
+	<div class="pageWidth">
+		<div class="pageContent">
+<div id="retro_title" class="bgcolor2"><a href="https://forums.sonicretro.org/" style="float:left; position: absolute; top: 0; left:0; height:65px; width:350px;"></a>
+<div class="navStuff">
+<a href="https://www.sonicretro.org/">Home</a>
+<a href="https://info.sonicretro.org/">Info</a>
+<a class="current" href="https://forums.sonicretro.org/">Forums</a>
+<a href="https://github.com/sonicretro/"><i class="fab fa-github" style="font-size:1.75em"></i></a>
+<a href="https://dc.railgun.works/r6jm5rhorx"><i class="fab fa-discord" style="font-size:1.5em"></i></a>
+<a href="https://segaretro.org/"><img src="./So I discovered a _fake_ copy for Sonic 4 _ Sonic and Sega Retro Forums_files/segaretro-knockout.svg" alt="Sega Retro" class="navicon"></a>
+<div><a href="https://forums.sonicretro.org/#" style="display: none;">▼</a><ul style="display:none"><li style="display: none;">
+<a href="https://www.sonicretro.org/">Home</a></li><li style="display: none;">
+<a href="https://info.sonicretro.org/">Info</a></li><li class="current" style="display: none;">
+<a href="https://forums.sonicretro.org/">Forums</a></li><li style="display: none;">
+<a href="https://github.com/sonicretro/"><i class="fab fa-github" style="font-size:1.75em"></i></a></li><li style="display: none;">
+<a href="https://dc.railgun.works/r6jm5rhorx"><i class="fab fa-discord" style="font-size:1.5em"></i></a></li><li style="display: none;">
+<a href="https://segaretro.org/"><img src="./So I discovered a _fake_ copy for Sonic 4 _ Sonic and Sega Retro Forums_files/segaretro-knockout.svg" alt="Sega Retro" class="navicon"></a></li></ul></div></div>
+
+
+			<span class="helper"></span>
+			</div>
+		</div>
+	</div>
+</div>	
+<script>
+		var retro_menu_objs = [];
+		jQuery(window).unbind('resize').resize(function(){
+			for (var i = 0; i < retro_menu_objs.length; i++)
+				if (typeof(retro_menu_objs[i]) == "object")
+					if (typeof(retro_menu_objs[i].resize) == "function")
+						retro_menu_objs[i].resize();
+		});
+
+		var retro_menu_obj = function(e, limit, outerlimit) {
+			var that = this;
+			this.e = e;
+			this.original_width = e.children('div').outerWidth();
+			this.limit = limit;
+			this.outerlimit = outerlimit;
+			this.resize = function() {
+				if (this.original_width == 0) return;
+				if (jQuery(window).width() >= this.original_width + this.limit) {
+					this.e.children('div').children('a').each(function(){
+						jQuery(this).show();
+					});
+					this.e.children('div').children('div').children('a').hide();
+					this.e.children('div').children('div').children('ul').children('li').each(function(){
+						jQuery(this).hide();
+					});
+				} else {
+					var els = [];
+					this.e.children('div').children('a').each(function(){
+						els.push(jQuery(this));
+						jQuery(this).show();
+					});
+					this.e.children('div').children('div').children('a').show();
+					var num = 0, current;
+					while (els.length > 0) {
+						current = els.pop();
+						current.hide();
+						num++;
+						if (jQuery(window).width() >= this.e.children('div').outerWidth() + this.outerlimit) els = [];
+					}
+					if (num > 0) {
+						this.e.children('div').children('div').children('ul').children('li').each(function(){
+							els.push(jQuery(this));
+						});
+						while (els.length > 0) {
+							current = els.pop();
+							if (num > 0) current.show(); else current.hide();
+							num--;
+						}
+					}
+				}
+			};
+			this.dropdown_out = -1;
+			this.dropdown_interval = null;
+			this.dropdown_interval_func = function(){
+				if (that.dropdown_out < 0) return;
+				else if (that.dropdown_out == 0) {
+					that.e.children('div').children('div').children('ul').hide();
+					that.e.children('div').children('div').children('a').removeAttr('style');
+				}
+				that.dropdown_out--;
+			};
+			if (this.e.children('div').children('div').length > 0) this.e.children('div').children('div').remove();
+			var link_html = this.e.children('div').html().split('</a>'); link_html.pop();
+			for (var i = 0; i < link_html.length; i++) {
+				link_html[i] = "<li>" + link_html[i] + "</a></li>";
+				if (link_html[i].indexOf('class="current"') != -1) {
+					link_html[i] = link_html[i].replace('class="current"','').replace('<li>','<li class="current">');
+				}
+			}
+			this.e.children('div').append('<div><a href="#">&#9660;</a><ul style="display:none">' + link_html.join("") + '</ul></div>');
+			this.e.children('div').children('div').children('a').unbind('click').click(function(e){
+				e.preventDefault();
+				jQuery(this).next().toggle();
+				if (jQuery(this).next().is(':visible')) {
+					jQuery(this).attr('style','color:rgba(255,255,255,1)');
+				} else {
+					jQuery(this).removeAttr('style');
+				}
+				this.dropdown_out = -1;
+				clearInterval(that.dropdown_interval);
+				that.dropdown_interval = null;
+			});
+			this.e.children('div').children('div').children('ul').unbind('mouseenter').unbind('mouseleave').hover(function(){
+				that.dropdown_out = -1;
+				clearInterval(that.dropdown_interval);
+				that.dropdown_interval = null;
+			},function(){
+				that.dropdown_out = 10;
+				clearInterval(that.dropdown_interval);
+				that.dropdown_interval = setInterval(function(){ that.dropdown_interval_func(); },100);
+			});
+			this.resize();
+		};
+	</script>
+<script type="text/javascript">retro_menu_objs.push(new retro_menu_obj(jQuery('#retro_title'),338,368));</script>
+<script type="text/javascript">retro_menu_objs.push(new retro_menu_obj(jQuery('#retro_menu'),338,368));</script>
+		
+
+
+
+<div id="navigation" class="withSearch">
+	<div class="pageContent">
+		<nav>
+
+<div class="navTabs">
+<div class="xbMaxwidth">	
+	
+	
+	<ul class="publicTabs">		
+	
+	
+	<li class="navTab"><a href="https://forums.sonicretro.org/index.php?find-new/posts" class="navLink" rel="nofollow">Recent Posts</a></li>
+
+		<!-- responsive popup -->
+		<li class="navTab navigationHiddenTabs Popup PopupControl PopupClosed PopupContainerControl" style="display: none;">	
+						
+			<a rel="Menu" class="navLink NoPopupGadget"><span class="menuIcon">Menu</span></a>
+			
+			
+		</li>
+			
+		
+	</ul>
+		
+		
+	
+		
+
+<ul class="visitorTabs">
+
+	
+
+	
+	<li class="navTab xbSearchNav">
+		
+
+<div id="searchBar" class="pageWidth">
+	
+	<span id="QuickSearchPlaceholder" title="Search"><i class="fa fa-search fa-fw"></i></span>
+	<fieldset id="QuickSearch">
+		<form action="https://forums.sonicretro.org/index.php?search/search" method="post" class="formPopup">
+			
+			<div class="primaryControls">
+				<!-- block: primaryControls -->
+				<input type="search" name="keywords" value="" class="textCtrl" placeholder="Search..." title="Enter your search and hit enter" id="QuickSearchQuery">				
+				 <!-- end block: primaryControls -->
+			</div>
+			
+			<div class="secondaryControls">
+				<div class="controlsWrapper">
+				
+					<!-- block: secondaryControls -->
+					<dl class="ctrlUnit">
+						<dt></dt>
+						<dd><ul>
+							<li><label><input type="checkbox" name="title_only" value="1" id="search_bar_title_only" class="AutoChecker" data-uncheck="#search_bar_thread"> Search titles only</label></li>
+						</ul></dd>
+					</dl>
+				
+					<dl class="ctrlUnit">
+						<dt><label for="searchBar_users">Posted by Member:</label></dt>
+						<dd>
+							<input type="text" name="users" value="" class="textCtrl AutoComplete" id="searchBar_users" autocomplete="off">
+							<p class="explain">Separate names with a comma.</p>
+						</dd>
+					</dl>
+				
+					<dl class="ctrlUnit">
+						<dt><label for="searchBar_date">Newer Than:</label></dt>
+						<dd><input type="text" data-orig-type="date" name="date" value="" class="textCtrl date" id="searchBar_date"></dd>
+					</dl>
+					
+					
+					<dl class="ctrlUnit">
+						<dt></dt>
+						<dd><ul>
+								
+									<li><label title="Search only Unpopular Sonic Opinions"><input type="checkbox" name="type[post][thread_id]" value="41037" id="search_bar_thread" class="AutoChecker" data-uncheck="#search_bar_title_only, #search_bar_nodes"> Search this thread only</label></li>
+								
+									<li><label title="Search only General Sonic Discussion"><input type="checkbox" name="nodes[]" value="1" id="search_bar_nodes" class="Disabler AutoChecker" checked="checked" data-uncheck="#search_bar_thread"> Search this forum only</label>
+	<ul id="search_bar_nodes_Disabler">
+		<li><label><input type="checkbox" name="type[post][group_discussion]" value="1" id="search_bar_group_discussion" class="AutoChecker" data-uncheck="#search_bar_thread"> Display results as threads</label></li>
+	</ul></li>
+								
+						</ul></dd>
+					</dl>
+					
+				</div>
+				<!-- end block: secondaryControls -->
+				
+				<dl class="ctrlUnit submitUnit">
+					<dt></dt>
+					<dd>
+						<input type="submit" value="Search" class="button primary Tooltip">
+						<div class="Popup" id="commonSearches">
+							<a rel="Menu" class="button NoPopupGadget Tooltip PopupControl" data-tipclass="flipped"><span class="arrowWidget"></span></a>
+							
+						</div>
+						<a href="https://forums.sonicretro.org/index.php?search/" class="button moreOptions Tooltip">More...</a>
+					</dd>
+				</dl>
+				
+			</div>
+			
+			<input type="hidden" name="_xfToken" value="">
+		</form>		
+	</fieldset>
+	
+</div>
+	</li>
+	
+
+	
+	
+	
+	<li class="navTab PopupClosed">
+			<label for="LoginControl"><a href="https://forums.sonicretro.org/index.php?login/" class=" navLink">Log in or Sign up</a></label>
+	</li>
+	
+	
+	
+	
+	
+	
+</ul>
+
+		
+				
+</div>
+</div>
+<span class="helper"></span>
+			
+		</nav>	
+	</div>
+</div>
+
+	
+
+
+	
+	
+		
+	
+</div>
+
+	
+	
+</header>
+
+
+</div>
+
+<footer>
+	
+
+
+<div class="footer">
+	<div class="pageWidth">
+		<div class="pageContent">
+			<dl class="choosers">
+			
+				
+					<dt>Style</dt>
+					<dd><a href="https://forums.sonicretro.org/index.php?misc/style&amp;redirect=%2Findex.php%3Fthreads%2Funpopular-sonic-opinions.41037%2F" class="OverlayTrigger Tooltip" rel="nofollow"><span>Sonic Retro</span> <i class="fa fa-paint-brush fa-fw"></i></a></dd>
+				
+				
+				
+							
+			</dl>
+			
+			
+			<ul class="footerLinks">
+			
+				
+					<li><a href="https://forums.sonicretro.org/index.php?misc/contact" class="OverlayTrigger" data-overlayoptions="{&quot;fixed&quot;:false}"><i class="fa fa-envelope-o fa-fw"></i> <span>Contact Us</span></a></li>
+				
+				<li><a href="https://forums.sonicretro.org/index.php?help/"><i class="fa fa-life-ring fa-fw"></i> <span>Help</span></a></li>
+				<li><a href="https://forums.sonicretro.org/" class="homeLink"><i class="fa fa-home fa-fw"></i> <span>Home</span></a></li>
+				
+				<li><a href="https://forums.sonicretro.org/index.php?forums/-/index.rss" rel="alternate" class="globalFeed" target="_blank" title="RSS feed for Sonic and Sega Retro Forums"><i class="fa fa-rss fa-fw"></i></a></li>
+			
+			</ul>
+			
+			<span class="helper"></span>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="footerLegal">
+	<div class="pageWidth">
+		<div class="pageContent">
+			<ul id="legal">
+			
+				<li><a href="https://forums.sonicretro.org/index.php?threads/read-the-rules-so-you-can-be-cool.11220/">Terms and Rules</a></li>
+				<li><a href="https://retrocdn.net/Privacy_Policy">Privacy Policy</a></li>
+			
+			</ul>
+			
+			<div id="copyright"><a href="https://xenforo.com/" class="concealed">Please keep in mind that this post isnt from Sonic retro and is for a game</a></div>
+			
+		
+			
+			
+			<span class="helper"></span>
+		</div>
+	</div>	
+</div>
+
+</footer>
+
+
+
+
+
+<script>
+
+
+jQuery.extend(true, XenForo,
+{
+	visitor: { user_id: 0 },
+	serverTimeInfo:
+	{
+		now: 1732792941,
+		today: 1732752000,
+		todayDow: 4
+	},
+	_lightBoxUniversal: "0",
+	_enableOverlays: "1",
+	_animationSpeedMultiplier: "1",
+	_overlayConfig:
+	{
+		top: "10%",
+		speed: 200,
+		closeSpeed: 100,
+		mask:
+		{
+			color: "rgb(45, 45, 45)",
+			opacity: "0.6",
+			loadSpeed: 200,
+			closeSpeed: 100
+		}
+	},
+	_ignoredUsers: [],
+	_loadedScripts: {"thread_view":true,"message":true,"bb_code":true,"xb_message":true,"message_user_info":true,"dark_postrating":true,"xb":true,"login_bar":true,"xb_scroll_buttons":true,"js\/dark\/postrating.js?1562510861&_v=4807703d":true},
+	_cookieConfig: { path: "/", domain: "", prefix: "xf_"},
+	_csrfToken: "",
+	_csrfRefreshUrl: "index.php?login/csrf-token-refresh",
+	_jsVersion: "4807703d",
+	_noSocialLogin: false
+});
+jQuery.extend(XenForo.phrases,
+{
+	cancel: "Cancel",
+
+	a_moment_ago:    "A moment ago",
+	one_minute_ago:  "1 minute ago",
+	x_minutes_ago:   "%minutes% minutes ago",
+	today_at_x:      "Today at %time%",
+	yesterday_at_x:  "Yesterday at %time%",
+	day_x_at_time_y: "%day% at %time%",
+
+	day0: "Sunday",
+	day1: "Monday",
+	day2: "Tuesday",
+	day3: "Wednesday",
+	day4: "Thursday",
+	day5: "Friday",
+	day6: "Saturday",
+
+	_months: "January,February,March,April,May,June,July,August,September,October,November,December",
+	_daysShort: "Sun,Mon,Tue,Wed,Thu,Fri,Sat",
+
+	following_error_occurred: "The following error occurred",
+	server_did_not_respond_in_time_try_again: "The server did not respond in time. Please try again.",
+	logging_in: "Logging in",
+	click_image_show_full_size_version: "Click this image to show the full-size version.",
+	show_hidden_content_by_x: "Show hidden content by {names}"
+});
+
+// Facebook Javascript SDK
+XenForo.Facebook.appId = "";
+XenForo.Facebook.forceInit = false;
+
+
+</script>
+
+
+<script>
+$(window).scroll(function() { // when the page is scrolled run this
+    if($(this).scrollTop() != 0) { // if you're NOT at the top
+        $('.xbScrollButtons').fadeIn("slow"); // fade in
+    } else { // else
+        $('.xbScrollButtons').fadeOut("slow"); // fade out
+    }
+});
+
+$(function() {
+    // the element inside of which we want to scroll
+        var $elem = $('#content');
+ 
+        // show the buttons
+  
+        // clicking the "down" button will make the page scroll to the $elem's height
+    $('#xb_ScrollDown').click(
+        function (e) {
+            $('html, body').animate({scrollTop: $elem.height()}, 700);
+        }
+    );
+        // clicking the "up" button will make the page scroll to the top of the page
+    $('#xb_ScrollUp').click(
+        function (e) {
+            $('html, body').animate({scrollTop: '0px'}, 700);
+        }
+    );
+ });
+ 
+ (function(){
+    
+    var special = jQuery.event.special,
+        uid1 = 'D' + (+new Date()),
+        uid2 = 'D' + (+new Date() + 1);
+        
+    special.scrollstart = {
+        setup: function() {
+            
+            var timer,
+                handler =  function(evt) {
+                    
+                    var _self = this,
+                        _args = arguments;
+                    
+                    if (timer) {
+                        clearTimeout(timer);
+                    } else {
+                        evt.type = 'scrollstart';
+                        jQuery.event.handle.apply(_self, _args);
+                    }
+                    
+                    timer = setTimeout( function(){
+                        timer = null;
+                    }, special.scrollstop.latency);
+                    
+                };
+            
+            jQuery(this).bind('scroll', handler).data(uid1, handler);
+            
+        },
+        teardown: function(){
+            jQuery(this).unbind( 'scroll', jQuery(this).data(uid1) );
+        }
+    };
+    
+    special.scrollstop = {
+        latency: 300,
+        setup: function() {
+            
+            var timer,
+                    handler = function(evt) {
+                    
+                    var _self = this,
+                        _args = arguments;
+                    
+                    if (timer) {
+                        clearTimeout(timer);
+                    }
+                    
+                    timer = setTimeout( function(){
+                        
+                        timer = null;
+                        evt.type = 'scrollstop';
+                        jQuery.event.handle.apply(_self, _args);
+                        
+                    }, special.scrollstop.latency);
+                    
+                };
+            
+            jQuery(this).bind('scroll', handler).data(uid2, handler);
+            
+        },
+        teardown: function() {
+            jQuery(this).unbind( 'scroll', jQuery(this).data(uid2) );
+        }
+    };
+    
+})();
+</script>
+
+
+
+
+
+
+
+
+
+<!--XenBase Current Version : 1.5.3 -->
+<!--Style Version : 1.5.3 -->
+
+
+
+
+<script>
+var noAvatars = document.querySelectorAll('.avatar img[src^="styles/sonicretroxf/xenforo/avatars"]');
+Array.prototype.slice.call(noAvatars).forEach( function(e) {
+if ((!e.parentElement.parentElement.id.startsWith("alert")) || (e.parentElement.parentElement.parentElement.id != "ProfilePostList")) {
+if (
+	e.style = "background: transparent !important; border: none !important";
+    e.parentElement.style = "background:tranparent !important;";
+	e.parentElement.parentElement.style = "height:1px !important; border: none !important; background: transparent !important;";
+	}
+});
+</script>
+<script defer="" src="./So I discovered a _fake_ copy for Sonic 4 _ Sonic and Sega Retro Forums_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;8e99facdce10ed37&quot;,&quot;version&quot;:&quot;2024.10.5&quot;,&quot;r&quot;:1,&quot;token&quot;:&quot;940cb3f5d1824be49334cb8f5386cda8&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfSpeedBrain&quot;:true,&quot;cfCacheStatus&quot;:true}}}" crossorigin="anonymous"></script>
+
+<div id="calroot" style="display: none; position: absolute;"><div id="calhead"><a id="calprev">←</a><div id="caltitle"></div><a id="calnext">→</a></div><div id="calbody"><div id="caldays"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div id="calweeks"></div></div></div><div class="Menu JsOnly blockLinksList primaryContent" id="NavigationHiddenMenu"></div><div class="Menu" id="XenForoUniq0">
+								<div class="xbSearchPopupArrow">
+									<span class="arrow"><span></span></span>
+								</div>
+								<div class="primaryContent menuHeader">
+									<h3>Useful Searches</h3>
+								</div>
+								<ul class="secondaryContent blockLinksList">
+									<!-- block: useful_searches -->
+									<li><a href="https://forums.sonicretro.org/index.php?find-new/posts&amp;recent=1" rel="nofollow">Recent Posts</a></li>
+									
+									<!-- end block: useful_searches -->
+								</ul>
+							</div><div class="xenTooltip" style="position: absolute; top: 1253.24px; left: 88.8375px; display: none;"><span class="arrow"></span>Style Chooser</div><div class="xenTooltip" style="display: none; position: absolute; top: 1075.44px; left: 84.6375px;"><span class="arrow"></span>Contribution Points</div><div class="xenTooltip" style="position: absolute; top: 1055.44px; left: 84.6375px; display: none;"><span class="arrow"></span>Likes Received</div><div class="xenTooltip" style="position: absolute; top: 1035.84px; left: 84.6375px; display: none;"><span class="arrow"></span>Posts</div></body></html>
