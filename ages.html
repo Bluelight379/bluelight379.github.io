@@ -1,0 +1,448 @@
+
+<!-- saved from url=(0041)file:///C:/Users/User/Downloads/ages.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!--<base href=".">--><base href="."><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>AGES Industries</title>
+<style>
+:root {
+  --red-accent: #ff3333;
+  --dark-bg: #121212;
+  --dark-secondary: #1e1e1e;
+  --text: #b3b3b3; 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: var(--text);
+}
+
+nav {
+  background-color: var(--dark-secondary);
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+}
+
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logo span {
+  color: var(--red-accent);
+}
+
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  margin-left: 2rem;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-links a:hover {
+  color: var(--red-accent);
+}
+
+.hero {
+  margin-top: -100px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 1;
+  position: relative;
+  opacity: 0;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  background-color: var(--red-accent);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+}
+
+.section {
+  padding: 5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  opacity: 0;
+}
+
+.service-section {
+  background-color: var(--dark-secondary);
+  padding: 3rem;
+  margin: 2rem 0;
+  border-radius: 15px;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.service-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.service-icon {
+  color: var(--red-accent);
+  font-size: 3rem;
+  margin-right: 1rem;
+}
+
+.service-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.service-description {
+  line-height: 1.6;
+}
+
+.service-features {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.service-features img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.service-features img:hover {
+  transform: scale(1.05);
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+  100% { transform: translateY(0px) rotate(360deg); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.05; }
+  50% { opacity: 0.2; }
+  100% { opacity: 0.05; }
+}
+
+@keyframes drift {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(20px, 20px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.2s;
+}
+
+.delay-2 {
+  animation-delay: 0.4s;
+}
+
+.delay-3 {
+  animation-delay: 0.6s;
+}
+
+.floating-shapes {
+  position: fixed; 
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  border: 2px solid var(--red-accent);
+  opacity: 0.1;
+  animation: float 6s ease-in-out infinite, pulse 4s ease-in-out infinite;
+}
+
+.background-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(var(--red-accent) 1px, transparent 1px),
+    linear-gradient(90deg, var(--red-accent) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.03;
+  pointer-events: none;
+  animation: drift 15s infinite linear;
+}
+
+.particle {
+  position: absolute;
+  background: var(--red-accent);
+  border-radius: 50%;
+  opacity: 0.1;
+  pointer-events: none;
+  animation: float 8s infinite ease-in-out;
+}
+
+section {
+  scroll-margin-top: 70px;
+}
+
+.company-logo {
+  width: 200px;
+  height: 200px;
+  margin: 100px auto 20px;
+  display: block;
+}
+
+.company-logo path {
+  fill: var(--red-accent);
+}
+
+.company-logo .secondary {
+  fill: var(--text);
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.contact-method {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-method:hover {
+  color: var(--red-accent);
+}
+
+.contact-method i {
+  font-size: 1.2rem;
+}
+
+</style>
+<link href="./ages_files/css2" rel="stylesheet">
+<script src="./ages_files/a076d05399.js.download"></script>
+</head>
+<body>
+
+<div class="background-grid"></div>
+
+<nav>
+  <div class="nav-content">
+    <span class="logo"><span>AGES </span>Industries</span>
+    <div class="nav-links">
+      <a onclick="document.getElementById(&#39;about&#39;).scrollIntoView({behavior: &#39;smooth&#39;})">About</a>
+      <a onclick="document.getElementById(&#39;services&#39;).scrollIntoView({behavior: &#39;smooth&#39;})">Projects</a>
+      <a onclick="document.getElementById(&#39;contact&#39;).scrollIntoView({behavior: &#39;smooth&#39;})">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<svg class="company-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <path d="M50 5 L90 30 L90 70 L50 95 L10 70 L10 30 Z" class="secondary"></path>
+  <path d="M50 15 L80 35 L80 65 L50 85 L20 65 L20 35 Z"></path>
+  <path d="M50 35 L60 40 L60 60 L50 65 L40 60 L40 40 Z" class="secondary"></path>
+</svg>
+
+<section class="hero">
+  <div class="floating-shapes">
+    <svg class="shape" style="top: 20%; left: 10%; width: 50px; height: 50px;">
+      <rect width="100%" height="100%" fill="none"></rect>
+    </svg>
+    <svg class="shape" style="top: 60%; right: 20%; width: 70px; height: 70px;">
+      <circle cx="35" cy="35" r="35" fill="none"></circle>
+    </svg>
+    <svg class="shape" style="top: 30%; right: 30%; width: 60px; height: 60px;">
+      <polygon points="30,0 60,60 0,60" fill="none"></polygon>
+    </svg>
+    <div class="particle" style="top: 15%; left: 25%; width: 4px; height: 4px;"></div>
+    <div class="particle" style="top: 75%; left: 65%; width: 6px; height: 6px;"></div>
+    <div class="particle" style="top: 45%; left: 85%; width: 3px; height: 3px;"></div>
+    <div class="particle" style="top: 35%; left: 15%; width: 5px; height: 5px;"></div>
+  </div>
+  <div class="hero-content fade-in-up delay-1">
+    <h1>Are you ready for the <span style="color: var(--red-accent)">future</span>?</h1>
+    <p>Bluring the lines between fiction and reality</p>
+    <button class="cta-button" onclick="document.getElementById(&#39;contact&#39;).scrollIntoView({behavior: &#39;smooth&#39;})">Commission us</button>
+  </div>
+</section>
+
+<section id="about" class="section fade-in-up delay-2">
+  <h2 style="text-align: center; margin-bottom: 2rem;">About Us</h2>
+  <p style="text-align: center; max-width: 800px; margin: 0 auto;">Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah </p>
+</section>
+
+<section id="services" class="section fade-in-up delay-3">
+  <h2 style="text-align: center; margin-bottom: 3rem;">Our Projects</h2>
+  
+  <div class="service-section visible">
+    <div class="service-header">
+      <i class="fas fa-robot service-icon"></i>
+      <h3>Project T.I.T.A.N</h3>
+    </div>
+    <div class="service-content">
+      <div class="service-description">
+        <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah </p>
+        <p style="margin-top: 1rem">Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah </p>
+      </div>
+      <div class="service-features">
+        <img src="./ages_files/photo-1581091226825-a6a2a5aee158" alt="Engineer working with robotic arm">
+        <img src="./ages_files/photo-1537432376769-00f5c2f4c8d2" alt="Scientists in laboratory">
+        <img src="./ages_files/photo-1581092334651-ddf26d9a09d0" alt="Industrial automation">
+        <img src="./ages_files/photo-1581092160562-40aa08e78837" alt="Manufacturing robotics">
+      </div>
+    </div>
+  </div>
+
+  <div class="service-section visible">
+    <div class="service-header">
+      <i class="fas fa-dna service-icon"></i>
+      <h3>Project mascot</h3>
+    </div>
+    <div class="service-content">
+      <div class="service-description">
+        <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah </p>
+        <p style="margin-top: 1rem">Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah </p>
+      </div>
+      <div class="service-features">
+        <img src="./ages_files/photo-1532094349884-543bc11b234d" alt="Medical research">
+        <img src="./ages_files/photo-1582719508461-905c673771fd" alt="Laboratory work">
+        <img src="./ages_files/photo-1576086213369-97a306d36557" alt="Biotech research">
+        <img src="./ages_files/photo-1581093588401-fbb62a02f120" alt="Scientific equipment">
+      </div>
+    </div>
+  </div>
+
+  <div class="service-section visible">
+    <div class="service-header">
+      <i class="fas fa-microchip service-icon"></i>
+      <h3>FXR Containment</h3>
+    </div>
+    <div class="service-content">
+      <div class="service-description">
+        <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah </p>
+        <p style="margin-top: 1rem">Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah </p>
+      </div>
+      <div class="service-features">
+        <img src="./ages_files/photo-1576670159805-81e36c8d5edb" alt="Brain scanning">
+        <img src="./ages_files/photo-1576670160374-578b77c0119c" alt="Neural research">
+        <img src="./ages_files/photo-1582719471384-894fbb16e074" alt="Medical technology">
+        <img src="./ages_files/photo-1576670161924-aa4e453c5d4c" alt="Healthcare professionals">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section fade-in-up delay-1">
+  <h2 style="text-align: center; margin-bottom: 2rem;">Contact Us</h2>
+  <p style="text-align: center; margin-bottom: 2rem;">Want your dreams into a reality? contact us.</p>
+  <div class="contact-info">
+    <a href="tel:+1-555-717-3035" class="contact-method">
+      <i class="fas fa-phone"></i>
+      +1 (555) 717-3035
+    </a>
+    <a href="mailto:contact@nexuscorp-robotics.example" class="contact-method">
+      <i class="fas fa-envelope"></i>
+      contact@ages.com
+    </a>
+  </div>
+</section>
+
+<script>const serviceSections = document.querySelectorAll('.service-section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, {
+  threshold: 0.5
+});
+serviceSections.forEach(section => {
+  observer.observe(section);
+});</script>
+
+</body></html>
