@@ -203,6 +203,19 @@ nav {
   }
 }
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.company-logo {
+  animation: spin 10s linear infinite; /* Spins every 10 seconds */
+}
+
 .fade-in-up {
   opacity: 0;
   animation: fadeInUp 0.8s ease forwards;
